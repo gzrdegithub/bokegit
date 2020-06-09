@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>二级菜单</title>
+	<link rel="stylesheet" href="style.css">
+	<script type="text/javascript" src="tools.js"></script>
+	<!-- <script type="text/javascript" src="01.js"></script> -->
+	<script type="text/javascript">
+	window.onload = function(){
+			var c_span = document.querySelectorAll(".c_span");//获取所有class为c-span的元素
+
+			var now_div = c_span[0].parentNode;//定义当前的操作的div	
+
+			for (var i = 0; i < c_span.length; i++) {  //操作每个当前点击的菜单
+
+				c_span[i].onclick = function(){
+
+					var parentDiv = this.parentNode;//获取span的父级元素DIV	
+
+					tog(parentDiv);
+
+					tog(now_div);//打开其他菜单并关闭其他菜单		
+
+					now_div = parentDiv;
+
+					};
+					
+				}
+
+				//定义一个切换关闭菜单的方法
+			function tog(obj){
+				var begin = obj.offsetHeight;//获取开始时元素的高度
+
+					toggleClass(obj , "ctr_style");//切换DIV的class，有则去掉，无则添加
+
+					var end = obj.offsetHeight;//获取结束时元素的高度
+
+					//console.log(begin,end);
+					
+					obj.style.height = begin + "px";
+
+					move(obj,"height",end,20,function(){
+						obj.style.height = "";
+					});
+			}
+			
+	}
+	</script>
+</head>
+<body>
+	<div class="all_div">
+		<div>
+			<span class="c_span">菜单一</span>
+			<a href="#">目录一</a>
+			<a href="#">目录二</a>
+			<a href="#">目录三</a>
+			<a href="#">目录四</a>
+			<a href="#">目录五</a>
+		</div>
+		<div class="ctr_style">
+			<span class="c_span">菜单二</span>
+			<a href="#">目录一</a>
+			<a href="#">目录二</a>
+			<a href="#">目录三</a>
+			<a href="#">目录四</a>
+			<a href="#">目录五</a>
+		</div>
+		<div class="ctr_style">
+			<span class="c_span">菜单三</span>
+			<a href="#">目录一</a>
+			<a href="#">目录二</a>
+			<a href="#">目录三</a>
+			<a href="#">目录四</a>
+			<a href="#">目录五</a>
+		</div>
+		<div class="ctr_style">
+			<span class="c_span">菜单四</span>
+			<a href="#">目录一</a>
+			<a href="#">目录二</a>
+			<a href="#">目录三</a>
+			<a href="#">目录四</a>
+			<a href="#">目录五</a>
+		</div>
+		<div class="ctr_style">
+			<span class="c_span">菜单五</span>
+			<a href="#">目录一</a>
+			<a href="#">目录二</a>
+			<a href="#">目录三</a>
+			<a href="#">目录四</a>
+			<a href="#">目录五</a>
+		</div>
+	</div>
+
+	
+</body>
+</html>
