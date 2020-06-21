@@ -1,0 +1,157 @@
+html { overflow: scroll; }
+body{
+	background-color: black;
+	overflow:hidden
+}
+.main{
+	width:100%;
+	position: relative;
+}
+
+.screen1{
+            position: relative;
+            }
+
+.first{
+                -webkit-perspective:300px;
+                perspective: 300px;
+                width: 10vw;
+                height: 10vw;
+                position: absolute;
+                top: 15%;
+                left: 8%;
+                z-index: 3;  
+            }
+            
+.wrap{
+                position: absolute;
+                height: 7vw;
+                width: 7vw;
+                transform-style:preserve-3d ;
+                -webkit-transform-style: preserve-3d;
+                -webkit-transform: rotateX(-30deg) rotateY(-30deg);
+                -webkit-animation: 5s mov linear infinite ;
+            }
+            
+            
+ .wrap > div{
+                background: -webkit-linear-gradient(left, rgba(54, 226, 248, 0.5) 0px, rgba(54, 226, 248, 0.5) 3px, rgba(0, 0, 0, 0) 0px), -webkit-linear-gradient(top, rgba(54, 226, 248, 0.5) 0px, rgba(54, 226, 248, 0.5) 3px, rgba(0, 0, 0, 0) 0px);
+                background-color: rgba(200,150,160,0.3);
+                height:7vw;
+                width: 7vw;
+                border: 1px solid blueviolet;
+                -webkit-box-shadow: 0 0 10px rgba(0, 128, 0, 0.4);
+                box-shadow: 0 0 10px rgba(0, 128, 0, 0.4);
+                position: absolute;
+            }
+
+            .font
+            {
+                -webkit-transform: translateZ(3.5vw);
+            }
+            
+            .back
+            {
+                -webkit-transform: rotateX(180deg) translateZ(3.5vw);
+            }
+     
+            .left
+            {
+                -webkit-transform: rotateY(-90deg) translateZ(3.5vw);
+            }
+     
+            .right
+            {
+                -webkit-transform: rotateY(90deg) translateZ(3.5vw);
+            }
+     
+            .top
+            {
+                -webkit-transform: rotateX(90deg) translateZ(3.5vw);
+            }
+     
+            .bottom
+            {
+                -webkit-transform: rotateX(-90deg) translateZ(3.5vw);
+            }
+            
+            @keyframes mov{
+                from{-webkit-transform: rotateX(0deg) rotateY(0deg) translateZ(0vw);}
+                to{-webkit-transform: rotateX(360deg) rotateY(360deg) translateZ(0vw);}
+            }
+
+.logo{
+	width:100%;
+}
+.logo img{
+	width:100%;
+}
+.but-one{
+	position: absolute;
+	top: 72%;
+	left: 20%;
+}
+.but-two{
+	position: absolute;
+	top: 72%;
+	left: 55%
+}
+.but-three{
+	position: absolute;
+	top: 72%;
+	right: 15%
+}
+.main button{
+	background-color: #36393e;
+ 	letter-spacing: 8px;
+	border-radius: 50%;
+    opacity: 0.7;
+}
+.main button a{
+	text-decoration: none;
+	color: #e02809;
+	font-size: 2.5vw
+}
+.circle{
+	position: absolute;
+	top: 22%;
+	left: 42%;
+	
+	z-index: 5;
+	-webkit-transform: rotate(360deg);
+    animation: rotation .5s infinite;
+    -webkit-animation: rotation 1.5s linear infinite;
+    animation-delay:0.8s;
+	-moz-transform-origin: 50% 50%;
+transform-origin: 50% 50%;
+-webkit-transform-origin:50% 50%;
+
+-o-transform-origin:50% 50%;}
+.circle img{
+	width:18vw;
+	border-radius: 50%;
+}
+@-webkit-keyframes rotation{
+    from {-webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(360deg);}
+}
+.move {
+            /*position: relative; */
+            width:200px;
+            position: relative;
+ /*           margin-top: 50px;*/
+            animation: amove 1.5s infinite;
+            -webkit-animation:amove 1.5s infinite;
+            }
+            
+            -webkit-@keyframes amove{
+                0%{left: 0px;top: 0px;}
+                
+                100%{left: 100vw;top: 0px;}
+            }
+            
+            @keyframes amove{
+                0%{left: 0px;top: 0px;}
+                
+                100%{left: 100vw;top: 0px;}
+            }
