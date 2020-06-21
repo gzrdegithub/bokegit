@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>count data</title>
+	<style type="text/css">
+		.content{
+			background-color: #dbd;
+		}
+
+		table{
+			width: 300px;
+			font-size: 10px;
+			line-height: 30px;
+		}
+	
+	</style>
+</head>
+<body>
+	<table class="data" align="center" border="1px" cellspacing="0" cellpadding="1">
+		<tbody id="table">
+			<tr>
+				<td colspan="5" align="center" style="background-color: #bddbf7; font-size:20px; line-height:35px;">数据统计示例表</td>
+			</tr>
+			<tr align="center" style="background-color: #bdd">
+				<td class="content">成绩/姓名</td>
+				<td class="content">小明</td>
+				<td class="content">小红</td>
+				<td class="content">小兰</td>
+				<td class="content">总计</td>
+			</tr>
+			<tr align="center">
+				<td class="content">语文</td>
+				<td >78</td>
+				<td >89</td>
+				<td >68</td>
+				<td class="rowscount"></td>
+			</tr>
+			<tr align="center">
+				<td class="content">数学</td>
+				<td >56</td>
+				<td >75</td>
+				<td >60</td>
+				<td class="rowscount"></td>
+			</tr>
+			<tr align="center">
+				<td class="content">英语</td>
+				<td >99</td>
+				<td >30</td>
+				<td >80</td>
+				<td class="rowscount"></td>
+			</tr>
+			<tr align="center">
+				<td class="content">总计</td>
+				<td class="colscount"></td>
+				<td class="colscount"></td>
+				<td class="colscount"></td>
+				<td class="colscount">~~</td>
+			</tr>
+		</tbody>
+	</table>
+	<script type="text/javascript">
+		var table = document.getElementById("table");
+		var rowsc = document.querySelectorAll(".rowscount");
+		var colsc = document.querySelectorAll(".colscount");
+		var rows = table.rows.length;
+		var sum = 0;
+		function rowscount(){
+		for(var i = 2;i < rows-1;i++){
+			for(var j = 1;j < table.rows[i].cells.length-1;j++){
+				//console.log(table.rows[i].cells[j].innerHTML)
+				num = table.rows[i].cells[j].innerText.trim(" ");
+				sum += parseInt(num);
+				}
+			//console.log(sum)
+			rowsc[i-2].innerText = sum;
+			sum = 0;
+			}
+		}
+		function colscount(){
+			for(var i = 1;i < rows-2;i++){
+			for(var j = 2;j < table.rows[j].cells.length;j++){
+				//console.log(table.rows[j].cells[i].innerHTML)
+				num = table.rows[j].cells[i].innerText.trim(" ");
+				sum += parseInt(num);
+				}
+			//console.log(sum)
+			colsc[i-1].innerText = sum;
+			sum = 0;
+			}
+		}
+		rowscount();
+		colscount();
+
+	</script>
+</body>
+</html>
