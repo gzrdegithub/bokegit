@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>firstcanvas</title>
+	<style>
+	body{
+		background-color: black;
+		margin:0px;
+		padding: 0px;
+	}
+
+	#canvas{
+		display: block;
+	}
+</style>
+</head>
+<body>
+	<canvas id="canvas">你当前浏览器不支持canvas，请更换浏览器</canvas>
+
+	<script type="text/javascript">
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext("2d");
+		var w = canvas.width = window.innerWidth;
+		var h = canvas.height = window.innerHeight;
+		window.onresize = function(){
+			var w = canvas.width = window.innerWidth;
+			var h = canvas.height = window.innerHeight;
+		}
+		
+		var sum = 300;
+		var p = [];
+		for( var i = 0 ; i<sum ; i++ ){
+			p.push({
+				x:Math.random()*w,
+				y:Math.random()*h,
+				r:Math.random()*3,
+			});
+		}
+
+		function draw(){
+			ctx.beginPath();
+			ctx.fillStyle = "#fff";
+			for (var i = 0; i < sum; i++) {
+				ctx.moveTo(p[i].x,p[i].y);
+				ctx.arc(p[i].x,p[i].y,p[i].r,0,Math.PI*2,false);
+				}
+			ctx.fill();
+			changeY();
+		}
+		draw();
+
+		function changeY(){
+			for (var i = 0; i < sum; i++){
+				p[i].y ++;
+				p[i].x += Math.random()*2-1;
+				if (p[i].y > h) {
+					p[i].y = 0;
+					}
+				if (p[i].x > w) {
+					p[i].x = 0;
+					}
+				}
+
+		}
+
+		setInterval(function(){
+			ctx.clearRect(0,0,w,h);
+			draw();
+		},Math.random()*10+40);
+	</script>
+</body>
+</html>
