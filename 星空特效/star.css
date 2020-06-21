@@ -1,0 +1,28 @@
+body{
+	margin: 0vw;
+	padding: 0vw;
+	overflow: hidden;
+	position: absolute;
+}
+
+.btn{
+	background-color: lightblue;
+	color: blue;
+	font-size: 3rem;
+	width: 9.375rem;
+	height: 9.375rem;
+	border-radius: 50%;
+	position: absolute;
+	left: 16rem;
+	top: 15rem;
+	opacity: 0.3;
+	cursor: pointer;
+	z-index: 1000;
+}
+
+#canvas_id{
+	position: absolute;
+	top: 0vw;
+	left: 0vw;
+	z-index: -5;
+}
