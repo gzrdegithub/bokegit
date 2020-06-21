@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>图片</title>
+		<style type="text/css">
+			body{
+				margin: 0;
+				padding: 0;
+				background-color:black ;	
+				overflow: hidden;
+				
+			}
+
+			.font_1{
+			font-size: 50px;
+			color: red;
+			font-family: "微软雅黑";
+			}
+
+			.nav{
+			width: 1348px;
+			height: 80px;
+			background: url("img/nav.jpg");
+			text-align: center;
+			}
+			#all{
+				perspective: 800px;/*景深   视角*/
+			}
+			#div1{
+				position: relative;
+				width: 150px;
+				height: 200px;
+				margin: 150px auto;
+				transform-style: preserve-3d;/*3D场景打造*/
+				transform: rotateY(0deg);/*空间位置*/
+				border: 1px solid red;	
+			}
+			#div1 img{
+				
+				position: absolute;
+				top: 0;			
+				-webkit-box-reflect: below 5px -webkit-linear-gradient(top , rgba(0,0,0,0) 40% , rgba(0,0,0,0.5) 100%);/*倒影位置   与本体的距离*/
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+	
+    </div>
+		<div id="all">
+			<div id="div1">
+			<img src="1.jpg" alt="" width="150" height="200" />
+			<img src="2.jpg" alt="" width="150" height="200" />
+			<img src="3.jpg" alt="" width="150" height="200" />
+			<img src="4.jpg" alt="" width="150" height="200" />
+			<img src="5.jpg" alt="" width="150" height="200" />
+			<img src="6.jpg" alt="" width="150" height="200" />
+			<img src="7.jpg" alt="" width="150" height="200" />
+			<img src="8.jpg" alt="" width="150" height="200" />
+			<img src="9.jpg" alt="" width="150" height="200" />
+			<img src="10.jpg" alt="" width="150" height="200" />
+			<img src="11.jpg" alt="" width="150" height="200" />
+		</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		/*
+		 1.让所有图片旋转一定的平均度数
+		 全局      函数
+		 2.拖拽
+		 	按下去   移动鼠标   松开
+		 	找到旋转的度数   >>  鼠标移动的距离
+		 	移动的度数   鼠标移动的事件的当前事件与上一次移动事件的距离差
+		 	当前坐标值   上一次坐标值  坐标差
+		 	赋值
+		 	差值是不能直接赋值给度数   会覆盖本身的一个度数   在原来的基础上加差值
+		 3.鼠标松开一瞬间  -->惯性
+		 	惯性  >>  度数变化就是差值的变化   差值在一定的时间内慢慢变小
+		 	当差值小到某一个程度   改变就结束	
+		 */
+		
+		var oImg = document.getElementsByTagName("img");//通过标签获取图片
+		var nowX , nowY , lastX , lastY , minusX , minusY , roX = 0 , roY = 0;
+		var odiv1 = document.getElementById("div1");
+		var timer;
+		
+		(function(i){
+		var imgLan = oImg.length;//保存数据
+		var deg = 360/imgLan;                   
+		for(; i<imgLan ; i++ )
+			{
+			oImg[i].style.transform = "rotateY("+deg*i+"deg) translateZ(350px)";
+			}
+		} )(0);
+		document.onmousedown = function(e){
+				//鼠标按下
+				var e = e || window.event;//event  IE不支持参数调用
+				//第一次点击的时候产生的最早的值
+				lastX = e.clientX;
+				lastY = e.clientY;
+			this.onmousemove = function(e){
+				//鼠标移动
+				var e = e || window.event;
+				nowX = e.clientX;//每次移动一次产生一个新的坐标值
+				nowY = e.clientY;
+				//than 计算差
+				minusX = nowX - lastX;
+				minusY = nowY - lastY;	
+				//求旋转的度数
+				roY += minusY *0.2;
+				roX -= minusX *0.1;
+				//than 赋值给度数
+				odiv1.style.transform = 'rotateX('+roY+'deg) rotateY('+roX+'deg)';
+			
+				lastX = nowX;//用完之后变旧值
+				lastY = nowY;
+			}
+			this.onmouseup = function(){
+				//鼠标松开
+				this.onmousemove = null;//清空鼠标移动事件
+				//在一段时间重复做某件事情
+				timer = setInterval(function(){
+					minusX *= 0.95;
+					minusY *= 0.95;
+					roY += minusY *0.2;
+					roX -= minusX *0.1;
+					odiv1.style.transform = 'rotateX('+roY+'deg) rotateY('+roX+'deg)';
+					if(Math.abs(minusX)<0.1 || Math.abs(minusY)<0.1)
+					{
+						clearInterval(timer);
+					}
+				} , 1000/60)
+			}
+			
+		}	
+	</script>
+
+</html>
