@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Rain</title>
+	<style type="text/css">
+	body{
+		margin:0px;
+		padding: 0px;
+	}
+
+	#canvas{
+		display: block;
+		background-color: black;
+	}
+</style>
+</head>
+<body>
+	<canvas id="canvas">该浏览器不支持canvas，请更换浏览器</canvas>
+
+	<script>
+		var w,h;	//浏览器宽高
+		var rainNum = [];//用来储存雨滴的数量
+		var canvas = document.getElementById('canvas');
+		(function size(){
+			window.onresize = arguments.callee;
+			w = window.innerWidth;
+			h = window.innerHeight;
+			canvas.width = w;
+			canvas.height = h;
+		})()//检测浏览器刷新的情况，并且随浏览器的变化而变化
+		var boxs = canvas.getContext("2d");
+		function random(min,max){
+			return Math.random()*(max - min) + min;
+		}
+		function Rain(){};
+
+		Rain.prototype = {
+			init:function(){
+				this.x = random(0,w);
+				this.y = 0;
+				this.vY = random(4,5);//雨滴下落速度的大小
+				this.h = random(0.7*h,h);//雨滴下落时变成圆的高度
+				this.r = 1;//设置后面出现园的起始半径
+				this.vr = 1;//圆半径改变的速度大小
+			},
+			draw:function(){
+				if (this.y < this.h) {
+				boxs.beginPath();
+				boxs.fillStyle = "white";
+				boxs.fillRect(this.x,this.y,4,10);}//绘制雨滴
+				else{
+					// boxs.beginPath();
+					boxs.strokeStyle = "#fff";
+					boxs.arc(this.x,this.y,this.r,0,Math.PI*2);
+					boxs.stroke();
+				}//绘制圆
+			},
+			move:function(){
+				if(this.y < this.h){
+					this.y += this.vY;
+				}//判断雨滴的高度
+				else{
+					if(this.r < 45){
+						this.r += this.vr;}
+					else{
+						this.init();
+					}
+				}//判断当圆的半径大于45时就恢复起始状态
+				this.draw();
+			}
+		}
+		
+		function createRain(num){    //创建雨滴
+			for(var i = 0; i <num; i++){
+				setTimeout(function(){
+						var rain = new Rain();//定义一个储存雨滴的空间，课进行调用
+						rain.init();
+						rain.draw();
+						rainNum.push(rain);//将生成的雨滴存入数组
+					},200*i)
+			}
+		}
+		createRain(40);//雨滴数量
+		setInterval(function(){
+			boxs.fillStyle = "rgba(0,0,0,0.05)";//蒙版，用来覆盖之前绘制的雨滴
+			boxs.fillRect(0,0,w,h);
+			for(var item of rainNum){    //调用数组里面的数据
+				item.move();
+			}
+		},1000/60)
+	</script>
+</body>
+</html>
