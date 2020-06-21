@@ -1,0 +1,191 @@
+
+body{
+    position: absolute;
+    text-align: center;
+}
+
+.circle{
+    background-color: rgba(0,0,0,0);
+    border: 5px solid rgba(247, 14, 42, 1);
+    opacity: .9;
+    border-right: 5px solid rgba(0,0,0,0);
+    border-left: 5px solid rgba(0,0,0,0);
+    border-radius: 50px;
+    box-shadow: 0 0 35px #808080;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    position: fixed;
+    right: 330px;
+    top: 5px;
+    -moz-animation: spinPulse 20s infinite linear;
+    -webkit-animation: spinPulse 20s infinite linear;
+    -o-animation: spinPulse 20s infinite linear;
+    -ms-animation: spinPulse 20s infinite linear;
+}
+
+@keyframes spinPulse {
+    0%{
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+    }
+    100%{
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+    }
+}
+
+.small-circle{
+    background-color: rgba(0,0,0,0);
+    border: 6px solid rgba(31, 62, 230, 1);
+    opacity: .9;
+    border-left: 6px solid rgba(0,0,0,0);
+    border-right: 6px solid rgba(0,0,0,0);
+    border-radius: 50px;
+    box-shadow: 0 0 15px #202020;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    position: fixed;
+    right: 340px;
+    top: 15px;
+    -moz-animation: spinoffPulse 40s infinite linear;
+    -webkit-animation: spinoffPulse 40s infinite linear;
+    -o-animation: spinoffPulse 40s infinite linear;
+    -ms-animation: spinoffPulse 40s infinite linear;
+}
+
+@keyframes spinoffPulse {
+    0%{
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+    }
+    100%{
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+    }
+}
+
+.circle-text{
+    width: 66px;
+    height: 30px;
+    line-height: 15px;
+    margin: 0 auto;
+    position: fixed;
+    right: 337px;
+    top: 37px;
+}
+
+.top-button{
+    position: absolute;
+}
+
+.top-button button{
+    width: 200px;
+    height: 70px;
+    position: fixed;
+    top: 10px;
+    right: 70px;
+    background: none;
+    border: 1px pink solid;
+    font-size: 1.5rem;
+    color: #ff3d35;
+}
+
+.top-button button:hover{
+    opacity: 0.5;
+    background: lightpink;
+    border: 1px white solid;
+    font-size: 1.5rem;
+    color: black;
+    transition: 1.5s;
+    cursor: pointer;
+}
+
+.content{
+    pers
+}
+
+.content-div{
+    -moz-animation: tranall 1s linear;
+    -webkit-animation: tranall 1s linear;
+    -o-animation: tranall 1s linear;
+    -ms-animation: tranall 1s linear;
+}
+
+@keyframes tranall{
+    0%{
+        transform: transform: perspective(500px) rotateY(160deg);
+    }
+    100%{
+        transform: perspective(500px) rotateY(360deg);
+    }
+}
+
+.content-div-left{
+    width: 30vw;
+    height: 80vh;
+    background: rgba(255,255,255,0.5);
+    box-shadow: grey 3px 4px 5px;
+    position: absolute;
+    left: 2vw;
+    top: 14vh;
+}
+
+.content-div-center{
+    width: 30vw;
+    height: 80vh;
+    background: rgba(255,255,255,0.5);
+    box-shadow: grey 3px 4px 5px;
+    position: absolute;
+    left: 35vw;
+    top: 14vh;
+}
+
+.content-div-right{
+    width: 30vw;
+    height: 80vh;
+    background: rgba(255,255,255,0.5);
+    box-shadow: grey 3px 4px 5px;
+    position: absolute;
+    left: 68vw;
+    top: 14vh;
+    overflow: hidden;
+}
+
+.content-div:hover{
+    width: 30.3vw;
+    height: 81vh;
+    background: rgba(255,255,255,0.7);
+    color: blue;
+    transition: .5s;
+}
+
+.content-div-img{
+    margin-top: 20px;
+}
+
+.content-div-img img{
+    width: 25vw;
+    height: 20vw;
+}
+
+/*.content-div-img img:nth-child(1):hover{
+    z-index: -1;
+}*/
+
+.content-div-text{
+    text-indent: 2em;
+    width: 23vw;
+    margin: 0 auto;
+    margin-top: 50px;
+    overflow: hidden;
+}
